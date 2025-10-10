@@ -9,6 +9,10 @@ public class Item {
 	private double price;
 	
 	private int totalNumber;
+	
+	private boolean hasDetails;
+
+	
 
 	public Item() {
 		
@@ -58,6 +62,14 @@ public class Item {
 
 	public void setTotalNumber(int totalNumber) {
 		this.totalNumber = totalNumber;
+	}
+
+	
+	public boolean isHasDetails() {
+	    return hasDetails;
+	}
+	public void setHasDetails(boolean hasDetails) {
+	    this.hasDetails = hasDetails;
 	}
 
 }

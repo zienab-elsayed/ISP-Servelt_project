@@ -70,20 +70,19 @@
 
 <div class="container">
     <h1>Update Item</h1>
-    <form action="/Item_Project/ItemController" method="get">
+    <form action="/Item_Project/ItemController" method="post">
         <input type="hidden" name="action" value="UpdateItem">
-
-        <label>ID</label>
-        <input type="number" name="id" required>
-
+ 
+        <input type="hidden"  name="id" value="${item.id}">
+   
         <label>Name</label>
-        <input type="text" name="name" required>
+        <input type="text" name="name"  value="${item.name}" required>
 
         <label>Price</label>
-        <input type="number" name="price" step="0.01" required>
+        <input type="number" name="price"  value="${item.price}"  required>
 
         <label>Total Number</label>
-        <input type="number" name="total_number" required>
+        <input type="number" name="total_number"  value="${item.totalNumber}" required>
 
         <input type="submit" value="Update Item">
     </form>

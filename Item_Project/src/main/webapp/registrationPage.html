@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Welcome Page</title>
+<title>Registration Page</title>
 
 <style>
     body {
@@ -25,28 +25,23 @@
         animation: fadeIn 1s ease-in-out;
     }
 
-    h1 {
+    h2 {
         color: #00796b;
-        font-size: 2.5rem;
-        margin-bottom: 15px;
+        font-size: 2rem;
+        margin-bottom: 25px;
     }
 
-    h3 {
-        color: #444;
-        margin-bottom: 30px;
-        font-weight: 400;
-    }
-
-    button {
+    .btn {
         background: #009688;
         border: none;
         padding: 12px 28px;
         border-radius: 10px;
         cursor: pointer;
+        margin: 10px;
         transition: 0.3s;
     }
 
-    button a {
+    .btn a {
         color: white;
         text-decoration: none;
         font-size: 1rem;
@@ -54,7 +49,7 @@
         letter-spacing: 1px;
     }
 
-    button:hover {
+    .btn:hover {
         background: #00796b;
         transform: scale(1.05);
     }
@@ -67,9 +62,9 @@
 </head>
 <body>
   <div class="container">
-      <h1>Welcome</h1>
-      <h3>Click To Go To Main Page</h3>
-      <button><a href="/Item_Project/ItemController?action=ShowAllItems">Show All items</a></button>
+      <h2>Choose a Method to Register</h2>
+      <button class="btn"><a href="/Item_Project/Log-in.jsp">Log In</a></button>
+      <button class="btn"><a href="/Item_Project/Sing-in.jsp">Sign In</a></button>
   </div>
 </body>
 </html>

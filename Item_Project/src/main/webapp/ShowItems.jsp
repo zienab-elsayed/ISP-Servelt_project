@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ page import="com.Item.model.Item" %>
 <%@ page import="java.util.List" %>
-
+ 
 <!DOCTYPE html>
 <html>
 <head>
@@ -56,53 +56,66 @@
         transition: 0.3s;
     }
 
-    a {
+    /* Base Button Style */
+    a.action-btn {
         text-decoration: none;
-        padding: 6px 14px;
-        border-radius: 8px;
-        margin: 2px;
-        font-size: 0.9rem;
         display: inline-block;
-    }
-
-    a[href*="Update"] {
-        background: #ffca28;
-        color: #333;
-    }
-
-    a[href*="Delete"] {
-        background: #e53935;
-        color: white;
-    }
-
-    a[href*="Update"]:hover {
-        background: #ffc107;
-    }
-
-    a[href*="Delete"]:hover {
-        background: #c62828;
-    }
-
-    button {
-        display: block;
-        margin: 30px auto;
-        padding: 12px 20px;
-        background: #009688;
-        border: none;
-        border-radius: 10px;
+        padding: 10px 18px;
+        border-radius: 25px; /* pill shape */
+        margin: 4px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        transition: all 0.2s ease;
         cursor: pointer;
-        transition: 0.3s;
-    }
-
-    button a {
         color: white;
-        font-weight: bold;
-        text-decoration: none;
     }
 
-    button:hover {
-        background: #00796b;
+    /* Update = Blue */
+    a.action-btn.update { background: #42a5f5; }
+    a.action-btn.update:hover {
+        background: #1e88e5;
         transform: scale(1.05);
+    }
+
+    /* Delete = Red */
+    a.action-btn.delete { background: #ef5350; }
+    a.action-btn.delete:hover {
+        background: #e53935;
+        transform: scale(1.05);
+    }
+
+    /* Add Details = Green */
+    a.action-btn.addDetails, a.btn-add { background: #66bb6a; }
+    a.action-btn.addDetails:hover, a.btn-add:hover {
+        background: #43a047;
+        transform: scale(1.05);
+    }
+
+    /* Show Details = Purple */
+    a.action-btn.showDetails { background: #7e57c2; }
+    a.action-btn.showDetails:hover {
+        background: #5e35b1;
+        transform: scale(1.05);
+    }
+
+    /* Remove Details = Grey */
+    a.action-btn.removeDetails { background: #9e9e9e; }
+    a.action-btn.removeDetails:hover {
+        background: #757575;
+        transform: scale(1.05);
+    }
+
+    /* Add New Item */
+    a.btn-add {
+        display: inline-block;
+        padding: 12px 24px;
+        border-radius: 25px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1rem;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        margin-top: 20px;
     }
 </style>
 </head>
@@ -135,19 +148,33 @@
                 <td>$<%= item.getPrice() %></td>
                 <td><%= item.getTotalNumber() %></td>
 	            <td>
-	                <a href="/Item_Project/Update-Item.jsp">Update</a>
-	                <a href="/Item_Project/ItemController?action=DeleteItem&id=<%= item.getId() %>">Delete</a>
-	            </td>
+                    <a class="action-btn update" href="/Item_Project/ItemController?action=ShowItem&id=<%= item.getId() %>">Update</a>
+                    <a class="action-btn delete" href="/Item_Project/ItemController?action=DeleteItem&id=<%= item.getId() %>">Delete</a>
+                    <a class="action-btn addDetails" href="/Item_Project/Add-Item-details.jsp?item_id=<%= item.getId() %>">Add Details</a>
+
+                    <% if(item.isHasDetails()) { %>
+                        <a class="action-btn showDetails" href="/Item_Project/ItemController?action=ShowItemDetails&item_id=<%= item.getId() %>">Show Details</a>  
+                        <a class="action-btn removeDetails"  href="/Item_Project/ItemController?action=RemoveItemDetails&item_id=<%= item.getId() %>">Remove Details</a>
+                    <% } %>
+                </td>
 	        </tr>
          <%
                 }
+            } else {
+         %>
+            <tr>
+                <td colspan="5">No items found.</td>
+            </tr>
+         <%
             }
           %>
         
         </tbody>
     </table>
 
-    <button><a href="/Item_Project/Add-item.jsp">+ Add New Item</a></button>
+    <div style="text-align:center;">
+        <a class="btn-add" href="/Item_Project/Add-item.jsp">+ Add New Item</a>
+    </div>
 
 </body>
 </html>

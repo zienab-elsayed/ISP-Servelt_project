@@ -69,24 +69,27 @@
 <body>
 
 <div class="container">
-    <h1>Add New Item</h1>
-    <form action="/Item_Project/ItemController" method="post">
-        <input type="hidden" name="action" value="AddItem">
+    <h1>Add Item Details</h1>
+<form action="/Item_Project/ItemController" method="post">
+    <input type="hidden" name="action" value="SaveItemDetails">
+    <input type="hidden" name="item_id" value="${param.item_id}">
+     <p>Item ID: ${param.item_id}</p>
+     
+    <label>Description</label>
+    <input type="text" name="description" required>
 
-        <label>ID</label>
-        <input type="number" name="id" required>
+    <label>Category</label>
+    <input type="text" name="category" required>
 
-        <label>Name</label>
-        <input type="text" name="name" required>
+    <label>Brand</label>
+    <input type="text" name="brand" required>
 
-        <label>Price</label>
-        <input type="number" name="price" step="0.01" required>
+    <label>Add Date</label>
+    <input type="date" name="date" required>
 
-        <label>Total Number</label>
-        <input type="number" name="total_number" required>
+    <input type="submit" value="Save">
+</form>
 
-        <input type="submit" value="Add Item">
-    </form>
 </div>
 
 </body>
